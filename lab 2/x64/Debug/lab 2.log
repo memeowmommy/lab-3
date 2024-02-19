@@ -1,0 +1,4 @@
+﻿  lab 2.cpp
+C:\Users\Александра\OneDrive\Desktop\асд\lab 2\lab 2.cpp(95): warning C4715: ApllyOperation: значение возвращается не при всех путях выполнения
+C:\Users\Александра\OneDrive\Desktop\асд\lab 2\lab 2.cpp(187): warning C4715: MathCalc: значение возвращается не при всех путях выполнения
+  lab 2.vcxproj -> C:\Users\Александра\OneDrive\Desktop\асд\lab 2\x64\Debug\lab 2.exe

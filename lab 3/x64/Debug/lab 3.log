@@ -1,0 +1,6 @@
+﻿  lab 3.cpp
+C:\Users\Александра\OneDrive\Desktop\асд\lab 3\lab 3.cpp(21,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Александра\OneDrive\Desktop\асд\lab 3\lab 3.cpp(22,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Александра\OneDrive\Desktop\асд\lab 3\lab 3.cpp(23,14): warning C4244: инициализация: преобразование "double" в "int", возможна потеря данных
+C:\Users\Александра\OneDrive\Desktop\асд\lab 3\lab 3.cpp(31,31): warning C4244: =: преобразование "double" в "int", возможна потеря данных
+  lab 3.vcxproj -> C:\Users\Александра\OneDrive\Desktop\асд\lab 3\x64\Debug\lab 3.exe
