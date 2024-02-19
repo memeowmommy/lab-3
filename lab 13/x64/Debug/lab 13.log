@@ -1,0 +1,4 @@
+﻿  lab 13.cpp
+C:\Users\Александра\OneDrive\Desktop\асд\lab 13\lab 13.cpp(32,21): warning C4018: <: несоответствие типов со знаком и без знака
+C:\Users\Александра\OneDrive\Desktop\асд\lab 13\lab 13.cpp(51,42): warning C4267: return: преобразование из "size_t" в "int"; возможна потеря данных
+  lab 13.vcxproj -> C:\Users\Александра\OneDrive\Desktop\асд\lab 13\x64\Debug\lab 13.exe

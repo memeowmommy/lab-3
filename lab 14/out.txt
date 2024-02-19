@@ -1,0 +1,7 @@
+Key | Value
+0	ka    
+1	
+2	pipi    ki    
+3	
+4	d    4    
+5	12b    
