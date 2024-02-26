@@ -1,5 +1,5 @@
 ﻿// сортировака вставками
-// сложность O(n²)
+// сложность O(n²) - худшее, O(n) - лучшее
 #include <iostream>
 #include <vector>
 using namespace std;
