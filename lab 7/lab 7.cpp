@@ -1,4 +1,5 @@
 ﻿//сортировка Шелла
+// сложность лучшее время O(n log²n)
 #include<iostream>
 #include<vector>
 using namespace std;
