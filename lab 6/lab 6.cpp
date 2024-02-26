@@ -1,4 +1,5 @@
 ﻿// сортировака выбором
+// сложность O(n²)
 #include <iostream>
 #include <vector>
 using namespace std;
