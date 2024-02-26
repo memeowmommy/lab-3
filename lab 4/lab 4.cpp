@@ -1,4 +1,5 @@
 ﻿// сортировка прочёсыванием
+//сложность - лучшее время O(n*logn)
 #include <iostream>
 #include <vector>
 using namespace std;
