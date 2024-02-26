@@ -1,4 +1,4 @@
-﻿//heap
+﻿//heap  O(n log n)
 #include <iostream>
 #include <vector>
 using namespace std;
