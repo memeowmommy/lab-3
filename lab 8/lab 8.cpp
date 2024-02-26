@@ -1,4 +1,5 @@
 ﻿// поразрядная сортировка
+// O(w* n)}, где w — количество бит для хранения каждого ключа
 #include<iostream>
 #include<vector>
 #include<algorithm>
