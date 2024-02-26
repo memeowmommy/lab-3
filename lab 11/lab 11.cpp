@@ -1,4 +1,5 @@
 ﻿// быстрая сортировка
+//лучшее время - O(n^2), худшее время - O(n log n)
 #include <iostream>
 #include <vector>
 using namespace std;
