@@ -4,7 +4,7 @@
 #include <stack>
 using namespace std;
 
-struct Tree //бинарного дерева
+struct Tree //бинарное дерево
 {
     int data;
     Tree* left;
@@ -267,5 +267,3 @@ int main()
     TreeClear(root);
     return 0;
 }
-
-//8(3(1,6(4,7)),10(,14(13,)))
