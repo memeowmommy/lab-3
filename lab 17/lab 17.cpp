@@ -5,23 +5,23 @@
 #include<Windows.h>
 using namespace std;
 
-// бинарное дерево
+// ГЎГЁГ­Г Г°Г­Г®ГҐ Г¤ГҐГ°ГҐГўГ®
 struct Tree
 {
     int data;
-    int level;  //Уровень узла для вывода дерева на экран
+    int level;  //Г“Г°Г®ГўГҐГ­Гј ГіГ§Г«Г  Г¤Г«Гї ГўГ»ГўГ®Г¤Г  Г¤ГҐГ°ГҐГўГ  Г­Г  ГЅГЄГ°Г Г­
     Tree* left;
     Tree* right;
     Tree* parent;
 };
 
-// создание узла в дереве
-Tree* CreateRoot(int data, Tree* p) // узел инициализируется с помощью ссылки на родителя и данных, в нём содержащихся
+// Г±Г®Г§Г¤Г Г­ГЁГҐ ГіГ§Г«Г  Гў Г¤ГҐГ°ГҐГўГҐ
+Tree* CreateRoot(int data, Tree* p) // ГіГ§ГҐГ« ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°ГіГҐГІГ±Гї Г± ГЇГ®Г¬Г®Г№ГјГѕ Г±Г±Г»Г«ГЄГЁ Г­Г  Г°Г®Г¤ГЁГІГҐГ«Гї ГЁ Г¤Г Г­Г­Г»Гµ, Гў Г­ВёГ¬ Г±Г®Г¤ГҐГ°Г¦Г Г№ГЁГµГ±Гї
 {
-    // создание новой вершины дерева
+    // Г±Г®Г§Г¤Г Г­ГЁГҐ Г­Г®ГўГ®Г© ГўГҐГ°ГёГЁГ­Г» Г¤ГҐГ°ГҐГўГ 
     Tree* q = new Tree;
     q->data = data;
-    // используем тернарный оператор
+    // ГЁГ±ГЇГ®Г«ГјГ§ГіГҐГ¬ ГІГҐГ°Г­Г Г°Г­Г»Г© Г®ГЇГҐГ°Г ГІГ®Г°
     q->level = (p == nullptr ? 0 : p->level + 1);
     q->left = nullptr;
     q->right = nullptr;
@@ -30,10 +30,10 @@ Tree* CreateRoot(int data, Tree* p) // узел инициализируется с помощью ссылки на
     return q;
 }
 
-// добавление элемента (по данным и указателю на указатель нужного корня)
+// Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  (ГЇГ® Г¤Г Г­Г­Г»Г¬ ГЁ ГіГЄГ Г§Г ГІГҐГ«Гѕ Г­Г  ГіГЄГ Г§Г ГІГҐГ«Гј Г­ГіГ¦Г­Г®ГЈГ® ГЄГ®Г°Г­Гї)
 void AddElement(int data, Tree*& root)
 {
-    if (root == nullptr) // корень дерева пуст => создаём корень
+    if (root == nullptr) // ГЄГ®Г°ГҐГ­Гј Г¤ГҐГ°ГҐГўГ  ГЇГіГ±ГІ => Г±Г®Г§Г¤Г ВёГ¬ ГЄГ®Г°ГҐГ­Гј
     {
         root = CreateRoot(data, nullptr);
         return;
@@ -41,17 +41,17 @@ void AddElement(int data, Tree*& root)
 
     Tree* v = root;
 
-    // помещаем данный элемент в левый или правый потомок
+    // ГЇГ®Г¬ГҐГ№Г ГҐГ¬ Г¤Г Г­Г­Г»Г© ГЅГ«ГҐГ¬ГҐГ­ГІ Гў Г«ГҐГўГ»Г© ГЁГ«ГЁ ГЇГ°Г ГўГ»Г© ГЇГ®ГІГ®Г¬Г®ГЄ
     while (((data < v->data) && (v->left != nullptr)) || ((data > v->data) && (v->right != nullptr)))
     {
         if (data < v->data) { v = v->left; }
         else { v = v->right; }
     }
 
-    // если значение потомка равно значению родителя, бездействуем
+    // ГҐГ±Г«ГЁ Г§Г­Г Г·ГҐГ­ГЁГҐ ГЇГ®ГІГ®Г¬ГЄГ  Г°Г ГўГ­Г® Г§Г­Г Г·ГҐГ­ГЁГѕ Г°Г®Г¤ГЁГІГҐГ«Гї, ГЎГҐГ§Г¤ГҐГ©Г±ГІГўГіГҐГ¬
     if (data == v->data) { return; }
 
-    // создаем новую вершину
+    // Г±Г®Г§Г¤Г ГҐГ¬ Г­Г®ГўГіГѕ ГўГҐГ°ГёГЁГ­Гі
     Tree* u = CreateRoot(data, v);
     if (data < v->data)
     {
@@ -63,7 +63,7 @@ void AddElement(int data, Tree*& root)
     }
 }
 
-// добавление элемента на основе скобочной записи
+// Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ  Г­Г  Г®Г±Г­Г®ГўГҐ Г±ГЄГ®ГЎГ®Г·Г­Г®Г© Г§Г ГЇГЁГ±ГЁ
 void AddBracketElement(int data, Tree*& root, bool is_left)
 {
     Tree* v = root;
@@ -78,7 +78,7 @@ void AddBracketElement(int data, Tree*& root, bool is_left)
     }
 }
 
-// заполнение бинарного дерева
+// Г§Г ГЇГ®Г«Г­ГҐГ­ГЁГҐ ГЎГЁГ­Г Г°Г­Г®ГЈГ® Г¤ГҐГ°ГҐГўГ 
 void FillTree(string& str, int& i, Tree*& root)
 {
     int value = 0;
@@ -87,12 +87,12 @@ void FillTree(string& str, int& i, Tree*& root)
     {
         switch (str[i])
         {
-        // '(' => двигаемся по дереву влево
+        // '(' => Г¤ГўГЁГЈГ ГҐГ¬Г±Гї ГЇГ® Г¤ГҐГ°ГҐГўГі ГўГ«ГҐГўГ®
         case '(':
         {
             i++;
             value = 0;
-            while ((str[i] >= '0') && (str[i] <= '9'))                      // является ли этот элемент цифрой?
+            while ((str[i] >= '0') && (str[i] <= '9'))                      // ГїГўГ«ГїГҐГІГ±Гї Г«ГЁ ГЅГІГ®ГІ ГЅГ«ГҐГ¬ГҐГ­ГІ Г¶ГЁГґГ°Г®Г©?
             {
                 value = value * 10 + str[i] - '0';
                 i++;
@@ -100,14 +100,14 @@ void FillTree(string& str, int& i, Tree*& root)
 
             if (value != 0)
             {
-                AddBracketElement(value, root, true);                 // добавление элемента
-                if (str[i] == '(') { FillTree(str, i, root->left); }  // если после '(' стоит '(' => рекурсивно вызываем данную функцию
+                AddBracketElement(value, root, true);                 // Г¤Г®ГЎГ ГўГ«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ 
+                if (str[i] == '(') { FillTree(str, i, root->left); }  // ГҐГ±Г«ГЁ ГЇГ®Г±Г«ГҐ '(' Г±ГІГ®ГЁГІ '(' => Г°ГҐГЄГіГ°Г±ГЁГўГ­Г® ГўГ»Г§Г»ГўГ ГҐГ¬ Г¤Г Г­Г­ГіГѕ ГґГіГ­ГЄГ¶ГЁГѕ
             }
             value = 0;
             break;
         }
 
-        // ',' => двигаемся по дереву вправо
+        // ',' => Г¤ГўГЁГЈГ ГҐГ¬Г±Гї ГЇГ® Г¤ГҐГ°ГҐГўГі ГўГЇГ°Г ГўГ®
         case ',':
         {
             i++;
@@ -127,7 +127,7 @@ void FillTree(string& str, int& i, Tree*& root)
             break;
         }
 
-        // ')' останавливает предыдущую рекурсию, рассматривается следующий элемент
+        // ')' Г®Г±ГІГ Г­Г ГўГ«ГЁГўГ ГҐГІ ГЇГ°ГҐГ¤Г»Г¤ГіГ№ГіГѕ Г°ГҐГЄГіГ°Г±ГЁГѕ, Г°Г Г±Г±Г¬Г ГІГ°ГЁГўГ ГҐГІГ±Гї Г±Г«ГҐГ¤ГіГѕГ№ГЁГ© ГЅГ«ГҐГ¬ГҐГ­ГІ
         case ')':
         {
             i++;
@@ -138,7 +138,7 @@ void FillTree(string& str, int& i, Tree*& root)
     }
 }
 
-// прямой обход дерева
+// ГЇГ°ГїГ¬Г®Г© Г®ГЎГµГ®Г¤ Г¤ГҐГ°ГҐГўГ 
 void Pass(Tree* v)
 {
     if (v == nullptr) { return; }
@@ -147,7 +147,7 @@ void Pass(Tree* v)
     Pass(v->right);
 }
 
-// поиск элемента
+// ГЇГ®ГЁГ±ГЄ ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 Tree* SearchElement(int data, Tree* v)
 {
     if (v == nullptr) { return v; }
@@ -156,21 +156,21 @@ Tree* SearchElement(int data, Tree* v)
     else { return SearchElement(data, v->right); }
 }
 
-// удаление элемента
+// ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ 
 void DeleteElement(int data, Tree*& root)
 {
     Tree* u = SearchElement(data, root);
 
     if (u == nullptr) { return; }
 
-    if (u->left == nullptr && u->right == nullptr && u == root)    // элемент — корень, значит удаляем его
+    if (u->left == nullptr && u->right == nullptr && u == root)    // ГЅГ«ГҐГ¬ГҐГ­ГІ вЂ” ГЄГ®Г°ГҐГ­Гј, Г§Г­Г Г·ГЁГІ ГіГ¤Г Г«ГїГҐГ¬ ГҐГЈГ®
     {
         delete root;
         root = nullptr;
         return;
     }
 
-    if (u->left == nullptr && u->right != nullptr && u == root)         // есть правый потомок => меняем элемент с самым маленьким элементом, находящимся справа
+    if (u->left == nullptr && u->right != nullptr && u == root)         // ГҐГ±ГІГј ГЇГ°Г ГўГ»Г© ГЇГ®ГІГ®Г¬Г®ГЄ => Г¬ГҐГ­ГїГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІ Г± Г±Г Г¬Г»Г¬ Г¬Г Г«ГҐГ­ГјГЄГЁГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІГ®Г¬, Г­Г ГµГ®Г¤ГїГ№ГЁГ¬Г±Гї Г±ГЇГ°Г ГўГ 
     {
         Tree* t = u->right;
         while (t->left != nullptr)
@@ -181,7 +181,7 @@ void DeleteElement(int data, Tree*& root)
         u = t;
     }
 
-    if (u->left != nullptr && u->right == nullptr && u == root)         // есть левый потомок => меняем элемент с самым большим из левой части
+    if (u->left != nullptr && u->right == nullptr && u == root)         // ГҐГ±ГІГј Г«ГҐГўГ»Г© ГЇГ®ГІГ®Г¬Г®ГЄ => Г¬ГҐГ­ГїГҐГ¬ ГЅГ«ГҐГ¬ГҐГ­ГІ Г± Г±Г Г¬Г»Г¬ ГЎГ®Г«ГјГёГЁГ¬ ГЁГ§ Г«ГҐГўГ®Г© Г·Г Г±ГІГЁ
     {
         Tree* t = u->left;
         while (t->right != nullptr)
@@ -192,7 +192,7 @@ void DeleteElement(int data, Tree*& root)
         u = t;
     }
 
-    if (u->left != nullptr && u->right != nullptr)                      // есть оба потомка => меняем наш элемент с самым маленьким из правой части
+    if (u->left != nullptr && u->right != nullptr)                      // ГҐГ±ГІГј Г®ГЎГ  ГЇГ®ГІГ®Г¬ГЄГ  => Г¬ГҐГ­ГїГҐГ¬ Г­Г Гё ГЅГ«ГҐГ¬ГҐГ­ГІ Г± Г±Г Г¬Г»Г¬ Г¬Г Г«ГҐГ­ГјГЄГЁГ¬ ГЁГ§ ГЇГ°Г ГўГ®Г© Г·Г Г±ГІГЁ
     {
         Tree* t = u->right;
         while (t->left != nullptr)
@@ -203,7 +203,7 @@ void DeleteElement(int data, Tree*& root)
         u = t;
     }
 
-    // удаление элемента
+    // ГіГ¤Г Г«ГҐГ­ГЁГҐ ГЅГ«ГҐГ¬ГҐГ­ГІГ 
     Tree* t;
     if (u->left == nullptr) { t = u->right; }
     else { t = u->left; }
@@ -213,17 +213,17 @@ void DeleteElement(int data, Tree*& root)
     delete u;
 }
 
-// очистка дерева
+// Г®Г·ГЁГ±ГІГЄГ  Г¤ГҐГ°ГҐГўГ 
 void ClearTree(Tree*& v)
 {
-    if (v == nullptr) { return; } // удаляем узлы
+    if (v == nullptr) { return; } // ГіГ¤Г Г«ГїГҐГ¬ ГіГ§Г«Г»
     ClearTree(v->left);
     ClearTree(v->right);
     delete v;
     v = nullptr;
 }
 
-// вывод дерева на экран
+// ГўГ»ГўГ®Г¤ Г¤ГҐГ°ГҐГўГ  Г­Г  ГЅГЄГ°Г Г­
 void Print(Tree* root)
 {
     if (root == nullptr)
@@ -232,7 +232,7 @@ void Print(Tree* root)
         return;
     }
 
-    // выводим дерева на экран справа налево (в консоли оно будет лежать на левом боку)
+    // ГўГ»ГўГ®Г¤ГЁГ¬ Г¤ГҐГ°ГҐГўГ  Г­Г  ГЅГЄГ°Г Г­ Г±ГЇГ°Г ГўГ  Г­Г Г«ГҐГўГ® (Гў ГЄГ®Г­Г±Г®Г«ГЁ Г®Г­Г® ГЎГіГ¤ГҐГІ Г«ГҐГ¦Г ГІГј Г­Г  Г«ГҐГўГ®Г¬ ГЎГ®ГЄГі)
     Print(root->right);
 
     for (int i = root->level; i > 0; i--)
@@ -244,21 +244,21 @@ void Print(Tree* root)
     Print(root->left);
 }
 
-void Menu(Tree* root)   //Реализация меню выбора
+void Menu(Tree* root)   //ГђГҐГ Г«ГЁГ§Г Г¶ГЁГї Г¬ГҐГ­Гѕ ГўГ»ГЎГ®Г°Г 
 {
     int input;
     bool flag = false;
     while (!flag)
     {
-        cout << "Выберите номер операции:" << std::endl;
-        cout << "Добавить - 1, Удалить - 2, Найти - 3, Выход из программы - 4" << std::endl;
+        cout << "Г‚Г»ГЎГҐГ°ГЁГІГҐ Г­Г®Г¬ГҐГ° Г®ГЇГҐГ°Г Г¶ГЁГЁ:" << std::endl;
+        cout << "Г„Г®ГЎГ ГўГЁГІГј - 1, Г“Г¤Г Г«ГЁГІГј - 2, ГЌГ Г©ГІГЁ - 3, Г‚Г»ГµГ®Г¤ ГЁГ§ ГЇГ°Г®ГЈГ°Г Г¬Г¬Г» - 4" << std::endl;
         cin >> input;
         switch (input)
         {
         case 1:
         {
             int value;
-            cout << "Введите значение, которое надо добавить: ";
+            cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, ГЄГ®ГІГ®Г°Г®ГҐ Г­Г Г¤Г® Г¤Г®ГЎГ ГўГЁГІГј: ";
             cin >> value;
             AddElement(value, root);
             break;
@@ -266,7 +266,7 @@ void Menu(Tree* root)   //Реализация меню выбора
         case 2:
         {
             int value;
-            cout << "Введите значение, которое надо удалить: ";
+            cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, ГЄГ®ГІГ®Г°Г®ГҐ Г­Г Г¤Г® ГіГ¤Г Г«ГЁГІГј: ";
             cin >> value;
             DeleteElement(value, root);
             break;
@@ -274,12 +274,12 @@ void Menu(Tree* root)   //Реализация меню выбора
         case 3:
         {
             int value;
-            cout << "Введите значение, которое надо найти: ";
+            cout << "Г‚ГўГҐГ¤ГЁГІГҐ Г§Г­Г Г·ГҐГ­ГЁГҐ, ГЄГ®ГІГ®Г°Г®ГҐ Г­Г Г¤Г® Г­Г Г©ГІГЁ: ";
             cin >> value;
 
             Tree* element = nullptr;
             element = SearchElement(value, root);
-            cout << "Элемент " << (element == nullptr ? "не найден!" : "найден.") << std::endl;
+            cout << "ГќГ«ГҐГ¬ГҐГ­ГІ " << (element == nullptr ? "Г­ГҐ Г­Г Г©Г¤ГҐГ­!" : "Г­Г Г©Г¤ГҐГ­.") << std::endl;
             break;
         }
         case 4:
@@ -299,13 +299,13 @@ int main()
     SetConsoleOutputCP(1251);
     setlocale(LC_ALL, "rus");
     string str;
-    cout << "Введите выражение в скобочном виде!" << endl;
+    cout << "Г‚ГўГҐГ¤ГЁГІГҐ ГўГ»Г°Г Г¦ГҐГ­ГЁГҐ Гў Г±ГЄГ®ГЎГ®Г·Г­Г®Г¬ ГўГЁГ¤ГҐ!" << endl;
     cin >> str;
 
     Tree* root = nullptr;
 
     int value = 0, i = 0;
-    while ((str[i] >= '0') && (str[i] <= '9'))  //Если в строке число, пишем его в значение узла
+    while ((str[i] >= '0') && (str[i] <= '9'))  //Г…Г±Г«ГЁ Гў Г±ГІГ°Г®ГЄГҐ Г·ГЁГ±Г«Г®, ГЇГЁГёГҐГ¬ ГҐГЈГ® Гў Г§Г­Г Г·ГҐГ­ГЁГҐ ГіГ§Г«Г 
     {
         value = value * 10 + str[i] - '0';
         i++;
@@ -315,5 +315,3 @@ int main()
     Menu(root);
     ClearTree(root);
 }
-
-//8(3(1,6(4,7)),10(,14(13,)))
